@@ -10,13 +10,17 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [ 16.x, 18.x, 20.x ]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Use Node.js 18
+      - name: Use Node.js ${{ matrix.version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: ${{ matrix.version }}
           cache: 'npm'
       - name: Install Dependencies
         run: npm install
