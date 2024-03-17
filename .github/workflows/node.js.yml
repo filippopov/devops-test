@@ -25,5 +25,7 @@ jobs:
           cache: 'npm'
       - name: Install Dependencies
         run: npm install
+      - name: Run for 60 seconds
+        run: sleep 60
       - name: Run integration test
         run: npm test
